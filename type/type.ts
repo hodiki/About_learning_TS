@@ -12,6 +12,12 @@ function greet(person: string) {
 //Any类型
 //Unknown类型
 //Tuple类型
+//void类型
+//Null和Undefined类型
+//object类型（小写o）
+//Object类型
+//{}类型
+//Never类型
 //+++++++++目录 end+++++++++
 
 
