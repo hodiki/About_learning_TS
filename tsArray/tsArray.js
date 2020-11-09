@@ -7,7 +7,7 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
             r[k] = a[j];
     return r;
 };
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 //数组解构
 var x;
 var y;
@@ -19,6 +19,7 @@ var two_array = [0, 1];
 var five_array2 = __spreadArrays(two_array, [2, 3, 4]);
 //数组遍历
 var colors = ["red", "green", "blue"];
-for (var i in colors) {
+for (var _i = 0, colors_1 = colors; _i < colors_1.length; _i++) {
+    var i = colors_1[_i];
     console.log(i);
 }

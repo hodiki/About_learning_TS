@@ -1,3 +1,4 @@
+"use strict";
 //交叉类型
 var point = {
     x: 1,

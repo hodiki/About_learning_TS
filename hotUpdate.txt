@@ -1,0 +1,1 @@
+$ tsc myFileName.ts --target ES5 -w --experimentalDecorators 监听ts文件的热更新

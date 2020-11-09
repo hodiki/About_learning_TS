@@ -1,3 +1,4 @@
+"use strict";
 //TypeScript 函数
 //TypeScript函数    JavaScript函数
 //含有类型          无类型

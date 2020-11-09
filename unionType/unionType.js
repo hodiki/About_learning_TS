@@ -1,3 +1,4 @@
+"use strict";
 //联合类型
 //联合类型通常与null或undefined一起使用
 var sayHello = function (name) {
@@ -35,3 +36,5 @@ function evaluatePrice(vehicle) {
 }
 var myTruck = { vType: "truck", capacity: 9.5 };
 evaluatePrice(myTruck);
+var greetM = function (message) {
+};
