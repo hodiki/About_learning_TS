@@ -20,11 +20,11 @@ function greet(person) {
 //Never类型
 //+++++++++目录 end+++++++++
 //Bollean类型
-var isDone = false;
+let isDone = false;
 //Number类型
-var count = 10;
+let count = 10;
 //String类型
-var namee = "smliker";
+let namee = "smliker";
 //Symbol类型
 // const sym = Symbol();
 // let obj = {
@@ -32,8 +32,8 @@ var namee = "smliker";
 // }
 // console.log(obj[sym]);//semlinker
 //Array类型
-var list1 = [1, 2, 3];
-var list2 = [1, 2, 3]; //泛型语法
+let list1 = [1, 2, 3];
+let list2 = [1, 2, 3]; //泛型语法
 //Enum枚举类型
 //数字枚举
 var Direction;
@@ -43,7 +43,7 @@ var Direction;
     Direction[Direction["east"] = 2] = "east";
     Direction[Direction["west"] = 3] = "west";
 })(Direction || (Direction = {}));
-var dir = Direction.north;
+let dir = Direction.north;
 //字符串枚举
 var Direction2;
 (function (Direction2) {
@@ -52,8 +52,8 @@ var Direction2;
     Direction2["east"] = "east";
     Direction2["west"] = "west";
 })(Direction2 || (Direction2 = {}));
-var dir2 = Direction2.north;
-var dir3 = 0 /* north */;
+let dir2 = Direction2.north;
+let dir3 = 0 /* north */;
 //异构枚举
 var Enum;
 (function (Enum) {
@@ -63,7 +63,7 @@ var Enum;
     Enum[Enum["D"] = 7] = "D";
 })(Enum || (Enum = {}));
 //Any类型
-var value;
+let value;
 // value.foo.bar;
 // value.trim();
 // value();
@@ -72,9 +72,9 @@ var value;
 // value.toString();
 //Unknown类型
 //对 unknown类型的 value 变量的所有赋值都被认为是类型正确的，但将value赋值给其它类型就不一样了
-var value2;
-var value11 = value2;
-var value12 = value2;
+let value2;
+let value11 = value2;
+let value12 = value2;
 // let value13: boolean=value2; //Error
 // let value14:number=value2; //Error
 // let value15:string = value2; //Error
@@ -85,18 +85,30 @@ var value12 = value2;
 // value2.trim(); //Error
 // value2(); //Error
 // new value2(); //Error
-//Tuple类型
-//TS特有类型，定义具有有限数量的未命名属性的类型，使用时必须提供每个属性的值，且类型需匹配
-var tupleType;
+//Tuple类型，元组
+//TS特有类型，元组，定义具有有限数量的未命名属性的类型，使用时必须提供每个属性的值，且类型需匹配
+let tupleType;
 tupleType = ["hello world", true];
+//可以使用元组类型来声明剩余参数的类型，且智能提示也会随之改变
+//例
+//未使用标签的智能提示
+//addPerson(arg_0:stirng,args_1:number):void
+function addPerson(...args) {
+    console.log(`Person info:name:${args[0]},age:${args[1]}`);
+}
+//已使用标签的智能提示
+//addPerson(name:string,age:number):void
+function addPerson1(...args) {
+    console.log(`Person info: name: ${args[0]},age: ${args[1]}`);
+}
 //void类型
 //声明一个void类型没什么用，严格模式下，其值只能为undefined
 function vvvoid() {
     console.log("This is nothing");
 }
 //Null和Undefined类型
-var u = undefined;
-var n = null;
+let u = undefined;
+let n = null;
 //Object类型
 //它是所有Object类的实例的类型,Object类的所有实例都继承了Object接口中的所有属性
 //Object接口定义了Object.prototype原型对象上的属性 例：toString():string;   //node_modules/typescript/lib/lib.es5.d.ts
@@ -107,7 +119,7 @@ function f(x) {
 }
 //{}类型
 //没有成员的对象
-var obj = {};
+const obj = {};
 //试图访问其属性，TS编译会报错
 // obj.prop="hello world";
 //但可以使用在Object类型上定义的所有属性和方法
@@ -126,7 +138,7 @@ function conNever(foo) {
     }
     else {
         //foo在此处为never
-        var check = foo;
+        const check = foo;
     }
 }
 console.log(greet("TyoeScript"));

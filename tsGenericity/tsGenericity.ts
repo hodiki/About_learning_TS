@@ -107,6 +107,8 @@ function loggingIdentity<T extends Lengthwise>(arg:T):T{
 // loggingIdentity(3); //Error 类型“number”的参数不能赋给类型“Lengthwise”的参数。
 //这时我们需要传入符合约束类型的值
 loggingIdentity({length:10,value:3});
+loggingIdentity("string");
+// loggingIdentity(123);    //Error
 
 
 //Partial

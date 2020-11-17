@@ -17,16 +17,15 @@ function Greeter(target) {
         console.log("Hello worker");
     };
 }
-var Greeting = /** @class */ (function () {
-    function Greeting() {
+let Greeting = class Greeting {
+    constructor() {
         //
     }
-    Greeting = __decorate([
-        Greeter
-    ], Greeting);
-    return Greeting;
-}());
-var myGreeting = new Greeting();
+};
+Greeting = __decorate([
+    Greeter
+], Greeting);
+let myGreeting = new Greeting();
 myGreeting.greet();
 //若通过外部输入（自定义）问候语
 function Greeter1(greeting) {
@@ -36,16 +35,15 @@ function Greeter1(greeting) {
         };
     };
 }
-var Greeting1 = /** @class */ (function () {
-    function Greeting1() {
+let Greeting1 = class Greeting1 {
+    constructor() {
         //
     }
-    Greeting1 = __decorate([
-        Greeter1("Hello TS!")
-    ], Greeting1);
-    return Greeting1;
-}());
-var myGreeting1 = new Greeting1();
+};
+Greeting1 = __decorate([
+    Greeter1("Hello TS!")
+], Greeting1);
+let myGreeting1 = new Greeting1();
 myGreeting1.greet();
 //属性装饰器顾名思义，用来装饰类的属性。它接收两个参数:
 //target:Object-被装饰的类
@@ -53,21 +51,21 @@ myGreeting1.greet();
 //例
 function logProperty(target, key) {
     delete target[key];
-    var backingField = "_" + key;
+    const backingField = "_" + key;
     Object.defineProperty(target, backingField, {
         writable: true,
         enumerable: true,
         configurable: true
     });
     //property getter
-    var getter = function () {
-        var currVal = this[backingField];
-        console.log("Get:" + key + "=>" + currVal);
+    const getter = function () {
+        const currVal = this[backingField];
+        console.log(`Get:${key}=>${currVal}`);
         return currVal;
     };
     //property setter
-    var setter = function (newVal) {
-        console.log("Set:" + key + "=>" + newVal);
+    const setter = function (newVal) {
+        console.log(`Set:${key}=>${newVal}`);
         this[backingField] = newVal;
     };
     //Create new property with getter and setter
@@ -78,16 +76,15 @@ function logProperty(target, key) {
         configurable: true
     });
 }
-var Person = /** @class */ (function () {
-    function Person(name) {
+class Person {
+    constructor(name) {
         this.name = name;
     }
-    __decorate([
-        logProperty
-    ], Person.prototype, "name", void 0);
-    return Person;
-}());
-var p1 = new Person("semlinker");
+}
+__decorate([
+    logProperty
+], Person.prototype, "name", void 0);
+const p1 = new Person("semlinker");
 p1.name = "kakuqo";
 //方法装饰器
 //方法装饰器声明：
@@ -98,32 +95,25 @@ p1.name = "kakuqo";
 //descriptor:TypePropertyDescript - 属性描述符
 //例:
 function log(target, propertyKey, descriptor) {
-    var originalMethod = descriptor.value;
-    descriptor.value = function () {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i] = arguments[_i];
-        }
+    let originalMethod = descriptor.value;
+    descriptor.value = function (...args) {
         console.log("wrapped function:before invoking " + propertyKey);
-        var result = originalMethod.apply(this, args);
+        let result = originalMethod.apply(this, args);
         console.log("wrapped function:after invoking " + propertyKey);
         return result;
     };
 }
-var Task = /** @class */ (function () {
-    function Task() {
-    }
-    Task.prototype.runTask = function (arg) {
+class Task {
+    runTask(arg) {
         console.log("runTask invoked,args: " + arg);
         return "finished";
-    };
-    __decorate([
-        log
-    ], Task.prototype, "runTask", null);
-    return Task;
-}());
-var task = new Task();
-var result = task.runTask("learn ts");
+    }
+}
+__decorate([
+    log
+], Task.prototype, "runTask", null);
+let task = new Task();
+let result = task.runTask("learn ts");
 console.log("result:" + result);
 //参数装饰器
 //参数装饰器声明:
@@ -133,15 +123,14 @@ console.log("result:" + result);
 //propertyKey:stirng | symbol - 方法名
 //parameterIndex:number - 方法中参数的索引值
 function Log(target, key, parameterIndex) {
-    var functionLogged = key || target.prototype.constructor.name;
-    console.log("The parameter in position " + parameterIndex + " at " + functionLogged + " has been decorated");
+    let functionLogged = key || target.prototype.constructor.name;
+    console.log(`The parameter in position ${parameterIndex} at ${functionLogged} has been decorated`);
 }
-var Greeter2 = /** @class */ (function () {
-    function Greeter2(phrase) {
+let Greeter2 = class Greeter2 {
+    constructor(phrase) {
         this.greeting = phrase;
     }
-    Greeter2 = __decorate([
-        __param(0, Log)
-    ], Greeter2);
-    return Greeter2;
-}());
+};
+Greeter2 = __decorate([
+    __param(0, Log)
+], Greeter2);

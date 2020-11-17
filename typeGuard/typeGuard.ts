@@ -53,6 +53,10 @@ interface Padder{
     getPaddingString():string;
 }
 
+interface PPader{
+    getPPadingNumber():number
+}
+
 class SpaceRepeatingPadder implements Padder{
     constructor(private numSpaces:number){}
     getPaddingString(){

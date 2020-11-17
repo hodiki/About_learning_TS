@@ -9,7 +9,7 @@ function printEmployeeInformation(emp) {
         console.log("Start Date:" + emp.startDate);
     }
 }
-var dd = {
+let dd = {
     name: "12",
     privileges: ["34", "56"],
 };
@@ -22,27 +22,25 @@ function padLeft(value, padding) {
     if (typeof padding === "string") {
         return padding + value;
     }
-    throw new Error("Expected string or number , got'" + padding + "'.");
+    throw new Error(`Expected string or number , got'${padding}'.`);
 }
-var SpaceRepeatingPadder = /** @class */ (function () {
-    function SpaceRepeatingPadder(numSpaces) {
+class SpaceRepeatingPadder {
+    constructor(numSpaces) {
         this.numSpaces = numSpaces;
     }
-    SpaceRepeatingPadder.prototype.getPaddingString = function () {
+    getPaddingString() {
         return Array(this.numSpaces + 1).join(" ");
-    };
-    return SpaceRepeatingPadder;
-}());
-var StringPadder = /** @class */ (function () {
-    function StringPadder(value) {
+    }
+}
+class StringPadder {
+    constructor(value) {
         this.value = value;
     }
-    StringPadder.prototype.getPaddingString = function () {
+    getPaddingString() {
         return this.value;
-    };
-    return StringPadder;
-}());
-var padder = new SpaceRepeatingPadder(6);
+    }
+}
+let padder = new SpaceRepeatingPadder(6);
 if (padder instanceof SpaceRepeatingPadder) {
     //padder的类型收窄为'SpaceRepeatingPadder'
 }

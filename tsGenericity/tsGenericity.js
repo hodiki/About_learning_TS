@@ -14,17 +14,14 @@ console.log(identity(68, "Semlinker"));
 //除了为类型遍历显式设定值之外，我们可以省略尖括号，让编译器自动选择这些类型
 console.log(identity(68, "Semlinker"));
 //泛型类
-var GenericNumber = /** @class */ (function () {
-    function GenericNumber() {
-    }
-    return GenericNumber;
-}());
-var myGenericNumber = new GenericNumber();
+class GenericNumber {
+}
+let myGenericNumber = new GenericNumber();
 myGenericNumber.zeroValue = 0;
 myGenericNumber.add = function (x, y) {
     return x + y;
 };
-var sem = {
+const sem = {
     name: 'semlinker',
     age: 33
 };
@@ -39,3 +36,4 @@ function loggingIdentity(arg) {
 // loggingIdentity(3); //Error 类型“number”的参数不能赋给类型“Lengthwise”的参数。
 //这时我们需要传入符合约束类型的值
 loggingIdentity({ length: 10, value: 3 });
+loggingIdentity("string");

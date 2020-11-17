@@ -1,13 +1,14 @@
 "use strict";
 //联合类型
 //联合类型通常与null或undefined一起使用
-var sayHello = function (name) {
+const sayHello = (name) => {
+    return name;
 };
-//例如：这里 name 的类型是 string | undefined 意味着可以将 string 或 undefined 的值传递给sayHello 函数
+//例如：这里 name 的类型是 string | undefined 意味着可以将 string 或 undefined 的值传递给 sayHello 函数
 sayHello("Hello");
 sayHello(undefined);
 //字面量类型，约束取值只能是某几个值中的一个
-var num = 1;
+let num = 1;
 //可辨识联合
 //可辨识
 //可辨识要求联合类型中的每个元素都含有一个单例类型属性
@@ -16,8 +17,8 @@ var CarTransmission;
     CarTransmission[CarTransmission["Automatic"] = 200] = "Automatic";
     CarTransmission[CarTransmission["Manual"] = 300] = "Manual";
 })(CarTransmission || (CarTransmission = {}));
-//类型守卫
-var EVALUATION_FACTOR = Math.PI; //评价因子
+//类型守卫（主要内容在typeGuard.ts）
+const EVALUATION_FACTOR = Math.PI; //评价因子
 //这段代码会报错：原因在 Motorcycle 接口中，并不存在 capacity 属性，而对于 Car 接口来说，它也不存在 capacity 属性
 // function evaluatePrice(Vehicle: Vehicle){    
 //     return Vehicle.capacity * EVALUATION_FACTOR;
@@ -34,7 +35,7 @@ function evaluatePrice(vehicle) {
             return vehicle.make * EVALUATION_FACTOR;
     }
 }
-var myTruck = { vType: "truck", capacity: 9.5 };
+const myTruck = { vType: "truck", capacity: 9.5 };
 evaluatePrice(myTruck);
-var greetM = function (message) {
+let greetM = (message) => {
 };

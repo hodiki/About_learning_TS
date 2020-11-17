@@ -25,3 +25,5 @@ function greeter(person: Person) {
 let user = new Student("holy", "M.", "light");
 
 document.body.innerHTML = greeter(user);
+
+export { }    //解决tslint报错

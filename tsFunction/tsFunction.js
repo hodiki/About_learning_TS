@@ -10,12 +10,12 @@
 //函数重载          无函数重载
 //箭头函数 
 //例
-(function () { return console.log('space'); });
-(function (dd) { return console.log(dd); });
-(function () { });
+() => console.log('space');
+(dd) => console.log(dd);
+() => { };
 //未使用箭头函数
 function Book1() {
-    var _this = this;
+    let _this = this;
     _this.publishDate = 2017;
     setInterval(function () {
         console.log(_this.publishDate);
@@ -23,10 +23,9 @@ function Book1() {
 }
 //使用箭头函数
 function Book2() {
-    var _this_1 = this;
     this.publishDate = 2016;
-    setInterval(function () {
-        console.log(_this_1.publishDate);
+    setInterval(() => {
+        console.log(this.publishDate);
     }, 1000);
 }
 //参数类型和返回类型
@@ -34,7 +33,7 @@ function createUserId(name, id) {
     return name + id;
 }
 //函数类型
-var IdGenerator;
+let IdGenerator;
 function createUserId2(name, id) {
     return name + id;
 }
@@ -46,16 +45,12 @@ function createUserId3(name, id, age) {
     return name + id;
 }
 //剩余参数
-function push(array) {
-    var items = [];
-    for (var _i = 1; _i < arguments.length; _i++) {
-        items[_i - 1] = arguments[_i];
-    }
+function push(array, ...items) {
     items.forEach(function (item) {
         array.push(item);
     });
 }
-var a2 = [];
+let a2 = [];
 push(a2, 1, 2, 3);
 function add(a, b) {
     if (typeof a === 'string' || typeof b === 'string') {
@@ -64,16 +59,13 @@ function add(a, b) {
     return a + b;
 }
 //重载类中的成员方法
-var Calculator = /** @class */ (function () {
-    function Calculator() {
-    }
-    Calculator.prototype.add = function (a, b) {
+class Calculator {
+    add(a, b) {
         if (typeof a === 'string' || typeof b === 'string') {
             return a.toString() + b.toString();
         }
         return a + b;
-    };
-    return Calculator;
-}());
-var calculator = new Calculator;
-var result = calculator.add('Semlinker', 'Kakuqo');
+    }
+}
+const calculator = new Calculator;
+const result = calculator.add('Semlinker', 'Kakuqo');

@@ -99,10 +99,23 @@ let value12: any = value2;
 // value2(); //Error
 // new value2(); //Error
 
-//Tuple类型
-//TS特有类型，定义具有有限数量的未命名属性的类型，使用时必须提供每个属性的值，且类型需匹配
+//Tuple类型，元组
+//TS特有类型，元组，定义具有有限数量的未命名属性的类型，使用时必须提供每个属性的值，且类型需匹配
 let tupleType: [string, boolean];
 tupleType = ["hello world", true];
+//可以使用元组类型来声明剩余参数的类型，且智能提示也会随之改变
+//例
+//未使用标签的智能提示
+//addPerson(arg_0:stirng,args_1:number):void
+function addPerson(...args:[string,number]):void{
+    console.log(`Person info:name:${args[0]},age:${args[1]}`)
+}
+//已使用标签的智能提示
+//addPerson(name:string,age:number):void
+function addPerson1(...args:[name:string,age:number]):void{
+    console.log(`Person info: name: ${args[0]},age: ${args[1]}`);
+}
+
 
 //void类型
 //声明一个void类型没什么用，严格模式下，其值只能为undefined
