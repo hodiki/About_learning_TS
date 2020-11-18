@@ -164,14 +164,14 @@ console.log("result:" + result);
 //propertyKey:stirng | symbol - 方法名
 //parameterIndex:number - 方法中参数的索引值
 
-function Log(target:Function,key:string,parameterIndex:number){
+function Log1(target:Function,key:string,parameterIndex:number){
     let functionLogged = key || target.prototype.constructor.name;
     console.log(`The parameter in position ${parameterIndex} at ${functionLogged} has been decorated`);
 }
 
 class Greeter2{
     greeting:string;
-    constructor(@Log phrase:string){
+    constructor(@Log1 phrase:string){
         this.greeting = phrase;
     }
 }
