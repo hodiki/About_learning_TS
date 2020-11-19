@@ -5,13 +5,18 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { Prop } from 'vue-property-decorator';
+import { Emit, Prop } from 'vue-property-decorator';
 
-//@Component 装饰器是用以声明子组件
+
 @Component
-export default class MyComponent extends Vue {
-  //@Prop 装饰器是用以接收来自父组件的数据
+export default class Test2 extends Vue {
+  //@Prop 装饰器用以接收来自父组件的数据
   @Prop() private msg!:string
+
+  @Emit()
+  tesst(){
+    return this.msg
+  }
 }
 </script>
 
